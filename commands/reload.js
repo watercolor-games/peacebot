@@ -18,12 +18,13 @@ exports.run = async (client, message, args) => {
                     message.channel.send(`Succesfully reloaded all commands.`)
                 } catch (err) {
                     console.error(err);
-                }    
-           })
+                }
+            })
+            return;
         }
         if (!command) return message.channel.send(`The module \`${args[0]}\` could not be found.`)
 
-        
+
         try {
             delete require.cache[require.resolve(`./${command}`)];
             let cmd = require(`./${command}`);
