@@ -1,0 +1,23 @@
+{
+  "name": "peacebot",
+  "version": "0.0.1",
+  "description": "Discord.JS bot written by Alkaline Thunder and Richard Moch",
+  "main": "bot.js",
+  "dependencies": {
+    "discord.js": "^11.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/watercolor-games/peacebot.git"
+  },
+  "author": "Alkaline Thunder, Richard Moch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/watercolor-games/peacebot/issues"
+  },
+  "homepage": "https://gitlab.com/watercolor-games/peacebot#README"
+}
