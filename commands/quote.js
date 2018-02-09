@@ -16,6 +16,8 @@ exports.run = (client, message, args) => {
         embed.setTitle(`Quote of the Day! Message author: ${client.users.get(quotesToChoose.user[quoteIndexChosen]).user.tag}`)
             .setDescription(quotesToChoose.content[quoteIndexChosen])
             .setColor('GREEN')
-            .setThumbnail(client.users.get(quotesToChoose.user[quoteIndexChosen]).displayAvatarURL)
+            .setThumbnail(client.users.get(quotesToChoose.user[quoteIndexChosen]).avatarURL)
+            .setFooter(`Message created on ${quotesToChoose.timestamp[quoteIndexChosen]} | Message ID: ${quotesToChoose.id[quoteIndexChosen]}`)
+        message.channel.send({ embed });
     });
 };
