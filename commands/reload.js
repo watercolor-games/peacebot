@@ -10,7 +10,7 @@ exports.run = async (client, message, args) => {
             let cmd = require(`./${command}`);
             client.commands.delete(command);
             client.commands.set(command, cmd);
-            message.reply(`✅ **The ${command} command has been reloaded!**`)
+            message.reply(`Command reloaded successfully.`)
         } catch (e) {
             message.channel.send('An error has occured while reloading this module. The error has been logged to the console.');
             console.log(e);
