@@ -11,7 +11,7 @@ exports.run = (client, message, args)=>{
         return message.reply("**Moo!** Please specify text for the cow to say.");
 
     let text = args.join(" ");
-    message.channel.send(`\`${makeSpeech(text, cowAscii)}\``);
+    message.channel.send(`\`\`\`${makeSpeech(text, cowAscii)}\`\`\``);
 };
 
 function makeSpeech(text, cow){
@@ -74,6 +74,7 @@ function splittext(text, maxlength)
             case '\t':
             case '\v':
             case '\r':
+            case "`":
                 continue;
             case '\n':
                 lines.push(current);

@@ -65,7 +65,18 @@ client.on('message', message => {
     {
         return;
     }
-    cmd.run(client, message, args);
+    try{
+        cmd.run(client, message, args);
+    }
+    catch(e)
+    {
+        var embed = new Discord.RichEmbed();
+        embed.setTitle("Fatal error running command.");
+        embed.setDescription("A fatal error has occurred while processing/running that command. Apologies.");
+        embed.setFooter("Exception logged to console | We'll keep on truckin'.");
+        message.channel.send(embed);
+        console.error(e);
+    }
 });
 
 

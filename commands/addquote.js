@@ -25,6 +25,12 @@ exports.run = (client, message, args)=>{
         }
     var json = fs.readFileSync("./quotes.json");
     var db = JSON.parse(json);
+    if(db.find((value, index, obj) => {
+        return value.id == messageid;
+    }))
+    {
+        return message.reply("That quote is already in the database!");
+    }
     db.push({
         id: messageid,
         user: found.author.id,
