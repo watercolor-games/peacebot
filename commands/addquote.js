@@ -6,29 +6,25 @@ exports.help = {
     category: "Quote of the Day",
     args: "<messageid>"
 };
-exports.run = (client, message, args)=>{
-    if(!args[0])
-    {
+exports.run = (client, message, args) => {
+    if (!args[0]) {
         return message.reply("Please specify a message ID.");
     }
     let messageid = args[0];
     let found = message.channel.messages.find("id", `${messageid}`);
-    if(!found)
-    {
+    if (!found) {
         return message.reply("That message wasn't found.");
     }
 
     const Discord = require("discord.js");
-    if(!fs.existsSync("./quotes.json"))
-        {
-            fs.writeFileSync("./quotes.json", "[]");
-        }
+    if (!fs.existsSync("./quotes.json")) {
+        fs.writeFileSync("./quotes.json", "[]");
+    }
     var json = fs.readFileSync("./quotes.json");
     var db = JSON.parse(json);
-    if(db.find((value, index, obj) => {
+    if (db.find((value, index, obj) => {
         return value.id == messageid;
-    }))
-    {
+    })) {
         return message.reply("That quote is already in the database!");
     }
     db.push({
