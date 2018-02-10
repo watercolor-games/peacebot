@@ -1,12 +1,10 @@
-exports.run = (client, message, args) =>{
-    if(!args[0])
-    {
+exports.run = (client, message, args) => {
+    if (!args[0]) {
         return message.reply("You are missing an argument - please send a command name as an argument!");
     }
 
     let command = client.commands.get(args[0]);
-    if(!command)
-    {
+    if (!command) {
         return message.reply("That command doesn't exist.");
     }
 
