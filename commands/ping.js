@@ -1,5 +1,5 @@
 exports.run = (client, message, args) => {
-    message.channel.send("Richie Moch is REALLY hot.");
+    message.channel.send("[**system status:** nominal]");
 };
 exports.help = {
     name: 'ping',
