@@ -17,7 +17,7 @@ exports.run = (client, message, args) => {
 function makeSpeech(text, cow) {
     let cowlines = cow.split('\n');
     let result = "";
-    let length = Math.min(text.length, 30);
+    let length = Math.min(text.length, 25);
 
     result = result + " _" + repeatString("_", length) + "_ \n";
     var lines = splittext(text, length);
