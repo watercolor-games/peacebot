@@ -6,7 +6,7 @@ exports.run = async (client, message, args) => {
             command = args[0];
         }
         if (args[0].toLowerCase() == "all") {
-            fs.readdir("./", (err, files) => {
+            fs.readdir("./commands", (err, files) => {
                 let modules = files.filter(file => file.split(".").pop() == "js");
                 try {
                     modules.forEach(command => {
@@ -14,7 +14,7 @@ exports.run = async (client, message, args) => {
                         let cmd = require(`./${command}`);
                         client.commands.delete(command);
                         client.commands.set(command, cmd);
-                    })
+                    });
                     message.channel.send(`Succesfully reloaded all commands.`)
                 } catch (err) {
                     console.error(err);
@@ -23,7 +23,6 @@ exports.run = async (client, message, args) => {
             return;
         }
         if (!command) return message.channel.send(`The module \`${args[0]}\` could not be found.`)
-
 
         try {
             delete require.cache[require.resolve(`./${command}`)];

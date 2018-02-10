@@ -12,8 +12,21 @@ exports.run = (client, message, args) => {
     }
     let messageid = args[0];
     let found = message.channel.messages.find("id", `${messageid}`);
+    let content = found.content;
     if (!found) {
         return message.reply("That message wasn't found.");
+    }
+
+    if (content.length < 1022) return message.reply("That message is too long. Please try again with a shorter message.");
+
+    if (found.attachments.size > 0) {
+        for (let [key, attachment] of found.attachments) {
+            if (content.length < 1) {
+                content = (attachment.proxyURL);
+            } else {
+                content += (`\r\n\r\nAttachments: ${attachment.proxyURL}`);
+            }
+        }
     }
 
     const Discord = require("discord.js");
@@ -30,7 +43,7 @@ exports.run = (client, message, args) => {
     db.push({
         id: messageid,
         user: found.author.id,
-        content: found.content,
+        content: content,
         timestamp: found.createdAt.toDateString()
     });
     json = JSON.stringify(db);
