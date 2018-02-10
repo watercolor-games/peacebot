@@ -10,14 +10,14 @@ exports.run = (client, message, args)=>{
     if(!args[0])
         return message.reply("**Moo!** Please specify text for the cow to say.");
 
-    let text = args.join(" ");
-    message.channel.send(`\`${makeSpeech(text, cowAscii)}\``);
+    let text = args.join(" ").replace("`", "\\`");
+    message.channel.send(`\`\`\`${makeSpeech(text, cowAscii)}\`\`\``);
 };
 
 function makeSpeech(text, cow){
     let cowlines = cow.split('\n');
     let result = "";
-    let length = Math.min(text.length, 30);
+    let length = Math.min(text.length, 25);
 
     result = result + " _" + repeatString("_", length) + "_ \n";
     var lines = splittext(text, length);
