@@ -7,24 +7,26 @@ exports.help = {
     args: "<messageid>"
 };
 exports.run = (client, message, args) => {
+    let content;
     if (!args[0]) {
         return message.reply("Please specify a message ID.");
     }
     let messageid = args[0];
     let found = message.channel.messages.find("id", `${messageid}`);
-    let content = found.content;
     if (!found) {
         return message.reply("That message wasn't found.");
     }
 
-    if (content.length < 1022) return message.reply("That message is too long. Please try again with a shorter message.");
+    if (found.content == null) content = "";
+
+    if (found.content.length < 1022) return message.reply("That message is too long. Please try again with a shorter message.");
 
     if (found.attachments.size > 0) {
         for (let [key, attachment] of found.attachments) {
-            if (content.length < 1) {
-                content = (attachment.proxyURL);
+            if (found.content == null) {
+                content = (`${attachment.proxyURL}`);
             } else {
-                content += (`\r\n\r\nAttachments: ${attachment.proxyURL}`);
+                content = found.content + (`\r\n\r\nAttachments: ${attachment.proxyURL}`);
             }
         }
     }
@@ -52,7 +54,7 @@ exports.run = (client, message, args) => {
     embed.setTitle(`Message by ${found.author.tag} added to quote database successfully.`);
     embed.setColor("GREEN");
     embed.setThumbnail(found.author.avatarURL);
-    embed.setDescription(found.content);
+    embed.setDescription(content);
     embed.setFooter(`Posted on ${found.createdAt.toDateString()} | Message ID: ${messageid}`);
     message.channel.send(embed);
 
