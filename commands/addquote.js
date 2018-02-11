@@ -30,6 +30,9 @@ exports.run = (client, message, args) => {
             }
         }
     }
+    else {
+        content = found.content;
+    }
 
     const Discord = require("discord.js");
     if (!fs.existsSync("./quotes.json")) {
