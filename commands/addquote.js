@@ -19,7 +19,7 @@ exports.run = (client, message, args) => {
 
     if (found.content == null) content = "";
 
-    if (found.content.length < 1022) return message.reply("That message is too long. Please try again with a shorter message.");
+    //if (found.content.length < 1022) return message.reply("That message is too long. Please try again with a shorter message.");
 
     if (found.attachments.size > 0) {
         for (let [key, attachment] of found.attachments) {
