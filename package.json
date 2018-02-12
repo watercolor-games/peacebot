@@ -4,7 +4,8 @@
   "description": "Discord.JS bot written by Alkaline Thunder and Richard Moch",
   "main": "bot.js",
   "dependencies": {
-    "discord.js": "^11.3.0"
+    "discord.js": "^11.3.0",
+    "request": "^2.81.0"
   },
   "devDependencies": {},
   "scripts": {
