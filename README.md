@@ -9,6 +9,7 @@ Then, clone this repo and run:
 ```bash
 npm install discord.js --save
 npm install pm2 -g
+npm install request@2.81.0
 ```
 
 Then, create a file in the root of the repository called `config.json`. Inside, put:
