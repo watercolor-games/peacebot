@@ -12,7 +12,7 @@ exports.run = async (client, message, args) => {
                 else
                     return text;
             }
-            let evaled = eval(code);
+            let evaled = Function(code)();
 
             if (typeof evaled !== "string")
                 evaled = require("util").inspect(evaled);
